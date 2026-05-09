@@ -1,0 +1,45 @@
+# Rust
+target/
+Cargo.lock.bak
+**/*.rs.bk
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+.Python
+build/
+dist/
+wheels/
+*.egg-info/
+.venv/
+venv/
+env/
+
+# maturin
+*.whl
+.maturin/
+
+# pytest / coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+coverage.xml
+
+# OS / editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# docs
+docs/site/
+
+# benchmarks
+criterion/
+target/criterion/

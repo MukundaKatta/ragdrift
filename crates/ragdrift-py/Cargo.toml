@@ -1,0 +1,30 @@
+[package]
+name = "ragdrift-py"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description = "PyO3 bindings for ragdrift-core. Built into the ragdrift Python wheel via maturin."
+publish = false
+
+[lib]
+# maturin reads the module name from pyproject.toml; the crate name needs to be
+# importable as a single token, so we use ragdrift_py and let maturin rewrite
+# the module path during install.
+name = "ragdrift_py"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+ragdrift-core = { path = "../ragdrift-core", version = "0.1.0", default-features = false, features = ["parallel"] }
+ndarray = { workspace = true }
+pyo3 = { workspace = true }
+numpy = { workspace = true }
+serde_json = { workspace = true }
+
+[features]
+# Default off so `cargo check`/`cargo test` of the workspace stays linkable.
+# Enabled by maturin via [tool.maturin].features in pyproject.toml.
+default = []
+extension-module = ["pyo3/extension-module"]

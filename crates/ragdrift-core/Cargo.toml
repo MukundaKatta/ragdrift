@@ -1,0 +1,47 @@
+[package]
+name = "ragdrift-core"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+documentation.workspace = true
+readme = "README.md"
+keywords.workspace = true
+categories.workspace = true
+description = "Five-dimensional drift detection for RAG systems. Pure Rust core: KS, PSI, MMD, sliced Wasserstein."
+
+[dependencies]
+# Numerical arrays + parallel iterators (rayon feature integrates with ParallelIterator).
+ndarray = { workspace = true }
+# RNG used for sliced Wasserstein projections and k-means init.
+rand = { workspace = true }
+rand_distr = { workspace = true }
+# Parallelism for embedding-pair MMD.
+rayon = { workspace = true, optional = true }
+# Error enum.
+thiserror = { workspace = true }
+# Snapshot serialization.
+serde = { workspace = true }
+serde_json = { workspace = true }
+
+[dev-dependencies]
+# Reproducible randomized tests.
+ndarray-rand = { workspace = true }
+# Benches.
+criterion = "0.5"
+
+[features]
+default = ["parallel"]
+parallel = ["dep:rayon"]
+
+[lib]
+doctest = true
+
+[[bench]]
+name = "drift_bench"
+path = "../../benches/drift_bench.rs"
+harness = false
+

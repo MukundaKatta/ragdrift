@@ -1,0 +1,40 @@
+[workspace]
+members = ["crates/ragdrift-core", "crates/ragdrift-py"]
+resolver = "2"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.75"
+authors = ["Mukunda Katta <mukunda.vjcs6@gmail.com>"]
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/MukundaKatta/ragdrift"
+homepage = "https://github.com/MukundaKatta/ragdrift"
+documentation = "https://docs.rs/ragdrift-core"
+readme = "README.md"
+keywords = ["rag", "drift", "embeddings", "monitoring", "llm"]
+categories = ["science", "algorithms"]
+
+[workspace.dependencies]
+# numerical core
+ndarray = { version = "0.16", features = ["serde", "rayon"] }
+ndarray-rand = "0.15"
+rand = "0.8"
+rand_distr = "0.4"
+# parallelism
+rayon = "1.10"
+# error model
+thiserror = "1.0"
+# serialization for snapshots and reports
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+# pyo3 bindings (kept in workspace for version alignment).
+# The `extension-module` feature is enabled by the bindings crate itself, not here,
+# so plain `cargo check` of the workspace stays linkable.
+pyo3 = { version = "0.22", features = ["abi3-py310"] }
+numpy = "0.22"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+opt-level = 3
