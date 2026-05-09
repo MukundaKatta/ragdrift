@@ -7,7 +7,7 @@ build-backend = "maturin"
 # project; we publish under "ragdrift-py" but the import name stays
 # `ragdrift` (same convention as pyyaml/yaml, opencv-python/cv2).
 name = "ragdrift-py"
-version = "0.1.1"
+version = "0.1.2"
 description = "Five-dimensional drift detection for production RAG systems. Rust core, Python bindings."
 readme = "README.md"
 license = { text = "MIT OR Apache-2.0" }

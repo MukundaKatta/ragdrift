@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2] - 2026-05-09
+
+### Changed
+- **Python distribution renamed from `ragdrift` to `ragdrift-py`** on PyPI
+  (the bare name was already taken by an unrelated project). Import name
+  unchanged: `import ragdrift`. Same convention as `pyyaml`/`yaml` or
+  `opencv-python`/`cv2`. Rust crates on crates.io (`ragdrift` and
+  `ragdrift-core`) keep their original names — we got there first.
+- Rust API and behavior unchanged from 0.1.1; this is a metadata-aligned
+  re-release so Rust + Python ship the same version number.
+
 ## [0.1.1] - 2026-05-09
 
 ### Changed
@@ -39,6 +50,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   pending Trusted Publisher setup; install from source via `maturin develop`
   in the meantime.
 
-[Unreleased]: https://github.com/MukundaKatta/ragdrift/compare/v0.1.1...HEAD
+[Unreleased]: https://github.com/MukundaKatta/ragdrift/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/MukundaKatta/ragdrift/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/MukundaKatta/ragdrift/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/MukundaKatta/ragdrift/releases/tag/v0.1.0
