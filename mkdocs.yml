@@ -3,7 +3,8 @@ site_url: https://mukundakatta.github.io/ragdrift/
 site_description: Five-dimensional drift detection for production RAG systems.
 repo_url: https://github.com/MukundaKatta/ragdrift
 repo_name: MukundaKatta/ragdrift
-docs_dir: .
+docs_dir: docs
+site_dir: site
 
 theme:
   name: material

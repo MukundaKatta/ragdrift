@@ -57,28 +57,28 @@ jobs:
       - name: install python deps
         run: |
           uv venv --python ${{ matrix.python }} .venv
-          source .venv/bin/activate || .\.venv\Scripts\activate
+          source .venv/bin/activate 2>/dev/null || source .venv/Scripts/activate
           uv pip install maturin pytest pytest-mock numpy mypy ruff
           uv pip install opensearch-py 'sqlalchemy>=2,<3' pgvector 'pinecone>=5,<8' prometheus-client datadog-api-client boto3
         shell: bash
       - name: build extension
         run: |
-          source .venv/bin/activate || .\.venv\Scripts\activate
+          source .venv/bin/activate 2>/dev/null || source .venv/Scripts/activate
           maturin develop
         shell: bash
       - name: pytest
         run: |
-          source .venv/bin/activate || .\.venv\Scripts\activate
+          source .venv/bin/activate 2>/dev/null || source .venv/Scripts/activate
           pytest -v
         shell: bash
       - name: mypy
         run: |
-          source .venv/bin/activate || .\.venv\Scripts\activate
+          source .venv/bin/activate 2>/dev/null || source .venv/Scripts/activate
           mypy --strict python/ragdrift
         shell: bash
       - name: ruff check
         run: |
-          source .venv/bin/activate || .\.venv\Scripts\activate
+          source .venv/bin/activate 2>/dev/null || source .venv/Scripts/activate
           ruff check .
           ruff format --check .
         shell: bash
