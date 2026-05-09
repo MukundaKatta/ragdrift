@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-05-09
+
+### Fixed
+- `ragdrift.__version__` now correctly reports the installed version. Previously
+  the lookup used the import name `ragdrift`, but the PyPI distribution is
+  `ragdrift-py`, so the lookup raised `PackageNotFoundError` and silently fell
+  back to `"0.0.0+local"`. Now tries both names (PyPI dist first, import name
+  second) before falling back.
+- sdist (`ragdrift-py-X.Y.Z.tar.gz`) now includes `LICENSE-MIT` and
+  `LICENSE-APACHE` so the PEP 639 `License-File` metadata declared by maturin
+  resolves. v0.1.2's sdist failed PyPI validation (wheels were unaffected).
+
 ## [0.1.2] - 2026-05-09
 
 ### Changed
@@ -50,7 +62,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   pending Trusted Publisher setup; install from source via `maturin develop`
   in the meantime.
 
-[Unreleased]: https://github.com/MukundaKatta/ragdrift/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/MukundaKatta/ragdrift/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/MukundaKatta/ragdrift/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/MukundaKatta/ragdrift/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/MukundaKatta/ragdrift/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/MukundaKatta/ragdrift/releases/tag/v0.1.0

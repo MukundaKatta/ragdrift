@@ -24,10 +24,16 @@ from ragdrift._native import (
     ResponseDrift,
 )
 
+# PyPI distribution name is `ragdrift-py` (the bare `ragdrift` was taken),
+# import name is `ragdrift`. Look up metadata under both — editable installs
+# during local dev sometimes register under the import name instead.
 try:
-    __version__ = version("ragdrift")
-except PackageNotFoundError:  # pragma: no cover - editable install before publish
-    __version__ = "0.0.0+local"
+    __version__ = version("ragdrift-py")
+except PackageNotFoundError:
+    try:
+        __version__ = version("ragdrift")
+    except PackageNotFoundError:  # pragma: no cover - source checkout, never installed
+        __version__ = "0.0.0+local"
 
 __all__ = [
     "BaselineSnapshot",

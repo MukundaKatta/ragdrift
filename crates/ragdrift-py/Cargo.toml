@@ -17,7 +17,7 @@ name = "ragdrift_py"
 crate-type = ["cdylib", "rlib"]
 
 [dependencies]
-ragdrift-core = { path = "../ragdrift-core", version = "0.1.2", default-features = false, features = ["parallel"] }
+ragdrift-core = { path = "../ragdrift-core", version = "0.1.3", default-features = false, features = ["parallel"] }
 ndarray = { workspace = true }
 pyo3 = { workspace = true }
 numpy = { workspace = true }
