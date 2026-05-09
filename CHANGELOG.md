@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-09
+
+### Fixed
+- Crate metadata `rust-version` corrected from `1.75` to `1.80`. The `parallel`
+  default feature pulls `rayon-core 1.13.0` which itself requires rustc 1.80,
+  so 1.75 was never actually buildable. No public-API or behavior changes.
+
 ## [0.1.0] - 2026-05-09
 
 ### Added
@@ -26,5 +33,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   pending Trusted Publisher setup; install from source via `maturin develop`
   in the meantime.
 
-[Unreleased]: https://github.com/MukundaKatta/ragdrift/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/MukundaKatta/ragdrift/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/MukundaKatta/ragdrift/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/MukundaKatta/ragdrift/releases/tag/v0.1.0

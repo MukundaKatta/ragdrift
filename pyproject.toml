@@ -4,7 +4,7 @@ build-backend = "maturin"
 
 [project]
 name = "ragdrift"
-version = "0.1.0"
+version = "0.1.1"
 description = "Five-dimensional drift detection for production RAG systems. Rust core, Python bindings."
 readme = "README.md"
 license = { text = "MIT OR Apache-2.0" }

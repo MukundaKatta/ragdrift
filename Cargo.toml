@@ -3,7 +3,7 @@ members = ["crates/ragdrift-core", "crates/ragdrift-py"]
 resolver = "2"
 
 [workspace.package]
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 # MSRV is 1.80 because rayon-core 1.13 requires it. We previously said 1.75
 # but that was wrong — `rayon` is a default-feature transitive dep.
