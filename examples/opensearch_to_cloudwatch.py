@@ -7,16 +7,16 @@ Configure via environment variables, then::
 
 Required env vars:
 
-    OPENCLAW_OS_HOST           e.g. https://search-foo.us-east-1.es.amazonaws.com
-    OPENCLAW_OS_INDEX          index name carrying embeddings
-    OPENCLAW_OS_EMBEDDING_FIELD  default: embedding
-    OPENCLAW_OS_TIMESTAMP_FIELD  default: @timestamp
-    OPENCLAW_BASELINE_START      ISO8601
-    OPENCLAW_BASELINE_END        ISO8601
-    OPENCLAW_CURRENT_START       ISO8601
-    OPENCLAW_CURRENT_END         ISO8601
-    OPENCLAW_AWS_REGION          default: us-east-1
-    OPENCLAW_CW_NAMESPACE        default: rag/drift
+    RAGDRIFT_OS_HOST           e.g. https://search-foo.us-east-1.es.amazonaws.com
+    RAGDRIFT_OS_INDEX          index name carrying embeddings
+    RAGDRIFT_OS_EMBEDDING_FIELD  default: embedding
+    RAGDRIFT_OS_TIMESTAMP_FIELD  default: @timestamp
+    RAGDRIFT_BASELINE_START      ISO8601
+    RAGDRIFT_BASELINE_END        ISO8601
+    RAGDRIFT_CURRENT_START       ISO8601
+    RAGDRIFT_CURRENT_END         ISO8601
+    RAGDRIFT_AWS_REGION          default: us-east-1
+    RAGDRIFT_CW_NAMESPACE        default: rag/drift
 """
 
 from __future__ import annotations
@@ -40,15 +40,15 @@ def env(name: str, default: str | None = None) -> str:
 
 
 def main() -> None:
-    region = env("OPENCLAW_AWS_REGION", "us-east-1")
-    host = env("OPENCLAW_OS_HOST")
-    index = env("OPENCLAW_OS_INDEX")
-    emb_field = env("OPENCLAW_OS_EMBEDDING_FIELD", "embedding")
-    ts_field = env("OPENCLAW_OS_TIMESTAMP_FIELD", "@timestamp")
-    cw_namespace = env("OPENCLAW_CW_NAMESPACE", "rag/drift")
+    region = env("RAGDRIFT_AWS_REGION", "us-east-1")
+    host = env("RAGDRIFT_OS_HOST")
+    index = env("RAGDRIFT_OS_INDEX")
+    emb_field = env("RAGDRIFT_OS_EMBEDDING_FIELD", "embedding")
+    ts_field = env("RAGDRIFT_OS_TIMESTAMP_FIELD", "@timestamp")
+    cw_namespace = env("RAGDRIFT_CW_NAMESPACE", "rag/drift")
 
-    baseline = OpenSearchWindow(env("OPENCLAW_BASELINE_START"), env("OPENCLAW_BASELINE_END"))
-    current = OpenSearchWindow(env("OPENCLAW_CURRENT_START"), env("OPENCLAW_CURRENT_END"))
+    baseline = OpenSearchWindow(env("RAGDRIFT_BASELINE_START"), env("RAGDRIFT_BASELINE_END"))
+    current = OpenSearchWindow(env("RAGDRIFT_CURRENT_START"), env("RAGDRIFT_CURRENT_END"))
 
     os_client = OpenSearch(
         hosts=[host],

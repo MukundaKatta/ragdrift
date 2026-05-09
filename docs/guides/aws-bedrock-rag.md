@@ -22,7 +22,7 @@ from ragdrift.adapters.opensearch import OpenSearchWindow
 from ragdrift.exporters import CloudWatchExporter
 
 os_client = OpenSearch(
-    hosts=[os.environ["OPENCLAW_OS_HOST"]],
+    hosts=[os.environ["RAGDRIFT_OS_HOST"]],
     connection_class=RequestsHttpConnection,
     timeout=30,
 )

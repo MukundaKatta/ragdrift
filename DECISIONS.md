@@ -46,6 +46,29 @@ records the choice and the alternative considered.
   We accept `PyReadonlyArray2<f32>` for embeddings (zero-copy) and convert to
   `ArrayView2<f32>` internally.
 
+## Lessons from the v0.1.0 ship
+
+These are corrections we made between writing the code and getting the public
+release green. Recording them so we don't make the same mistake in v0.1.x.
+
+- **Original MSRV claim of 1.75 was wrong**. Revised to 1.80 because the
+  `parallel` default feature pulls `rayon-core 1.13.0`, which itself requires
+  rustc >= 1.80. We caught this via the dedicated MSRV CI job; the previous
+  matrix-leg approach hid the real signal under generic "test failed" noise.
+- **`pinecone-client` is dead, use `pinecone`**. The official client was
+  renamed; `pinecone-client` now hard-raises on import. The PyPI extra is
+  `'ragdrift[pinecone]' -> pinecone>=5,<8`.
+- **mkdocs.yml belongs at the repo root, not inside `docs/`**. Putting it in
+  `docs/` forced `docs_dir: .`, which collided with `site_dir` under
+  `--strict`. Standard layout: `mkdocs.yml` at root, `docs_dir: docs`.
+- **Bash on Git Bash for Windows hates backslashes**. Cross-platform venv
+  activation via `source .venv/bin/activate || .\.venv\Scripts\activate`
+  silently mangles the second branch into `..venvScriptsactivate`. Use
+  forward slashes everywhere: `source .venv/Scripts/activate`.
+- **PyO3 extension-module feature must be opt-in for the bindings crate**, not
+  enabled at the workspace dep level. With it always-on, plain `cargo check`
+  on the workspace fails to link Python symbols.
+
 ## What we deliberately deferred to 0.2.0
 
 - Streaming / online drift (windowed updates).
@@ -53,3 +76,6 @@ records the choice and the alternative considered.
 - An async adapter API. The current adapters are sync; users who need async
   can wrap them with `asyncio.to_thread`.
 - A CLI entry point. The library is the product for 0.1.0.
+- PyO3 0.22 -> 0.28+ migration. Today's bindings use the `_bound` transitional
+  API (`PyDict::new_bound`, `get_type_bound`); the post-0.23 stabilized API
+  is cleaner.
