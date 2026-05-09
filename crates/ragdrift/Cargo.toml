@@ -1,0 +1,24 @@
+[package]
+name = "ragdrift"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+readme = "README.md"
+keywords.workspace = true
+categories.workspace = true
+description = "Five-dimensional drift detection for production RAG systems. Re-export of ragdrift-core."
+documentation = "https://docs.rs/ragdrift"
+
+[dependencies]
+# All the real code lives in ragdrift-core; this crate is a single-name
+# convenience facade so users can `cargo add ragdrift` without thinking
+# about the -core suffix.
+ragdrift-core = { path = "../ragdrift-core", version = "=0.1.1" }
+
+[dev-dependencies]
+# Used by the example in the crate-level doctest.
+ndarray = { workspace = true }

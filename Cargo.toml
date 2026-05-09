@@ -1,5 +1,5 @@
 [workspace]
-members = ["crates/ragdrift-core", "crates/ragdrift-py"]
+members = ["crates/ragdrift", "crates/ragdrift-core", "crates/ragdrift-py"]
 resolver = "2"
 
 [workspace.package]
