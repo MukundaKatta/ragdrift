@@ -80,15 +80,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      - run: cargo publish -p ragdrift-core --token "$CARGO_REGISTRY_TOKEN"
+      # Idempotent publish: skip if this exact version is already on crates.io.
+      # crates.io rejects republish of an existing version with a non-zero exit;
+      # we treat that specific failure as a no-op so re-tags don't break the workflow.
+      - name: publish ragdrift-core (skip if already published)
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
+        run: |
+          set +e
+          OUT=$(cargo publish -p ragdrift-core --token "$CARGO_REGISTRY_TOKEN" 2>&1)
+          STATUS=$?
+          echo "$OUT"
+          if [ $STATUS -ne 0 ]; then
+            if echo "$OUT" | grep -qE "(already (uploaded|exists)|crate version .* is already uploaded)"; then
+              echo "ragdrift-core version already on crates.io — skipping."
+              exit 0
+            fi
+            exit $STATUS
+          fi
 
   github-release:
     name: GitHub Release
-    needs: [publish-pypi, publish-cratesio]
+    # Don't block on the publish jobs — make a release even if PyPI/crates.io
+    # publishing was a no-op or failed (we still want the wheels attached and
+    # the auto-generated notes published).
+    needs: [build-wheels, build-sdist]
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v')
+    if: always() && startsWith(github.ref, 'refs/tags/v')
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
