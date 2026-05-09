@@ -10,15 +10,15 @@ threshold-alert on. Rust core for the math, Python for the glue.
 ## Install
 
 ```bash
-pip install ragdrift
+pip install ragdrift-py
 ```
 
 Optional adapters and exporters:
 
 ```bash
-pip install 'ragdrift[opensearch,aws]'    # OpenSearch + CloudWatch
-pip install 'ragdrift[pgvector,prometheus]'
-pip install 'ragdrift[pinecone,datadog]'
+pip install 'ragdrift-py[opensearch,aws]'    # OpenSearch + CloudWatch
+pip install 'ragdrift-py[pgvector,prometheus]'
+pip install 'ragdrift-py[pinecone,datadog]'
 ```
 
 ## 30-second example

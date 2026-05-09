@@ -7,7 +7,7 @@ End-to-end wiring for a Bedrock + OpenSearch Serverless + CloudWatch RAG stack.
 - An OpenSearch Serverless collection with a k-NN index that stores per-call
   embeddings and a timestamp field.
 - IAM credentials with read access to that collection and `cloudwatch:PutMetricData`.
-- `pip install 'ragdrift[opensearch,aws]'`
+- `pip install 'ragdrift-py[opensearch,aws]'`
 
 ## The loop
 

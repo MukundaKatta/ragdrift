@@ -3,7 +3,10 @@ requires = ["maturin>=1.7,<2.0"]
 build-backend = "maturin"
 
 [project]
-name = "ragdrift"
+# PyPI distribution name. The bare "ragdrift" was taken by an unrelated
+# project; we publish under "ragdrift-py" but the import name stays
+# `ragdrift` (same convention as pyyaml/yaml, opencv-python/cv2).
+name = "ragdrift-py"
 version = "0.1.1"
 description = "Five-dimensional drift detection for production RAG systems. Rust core, Python bindings."
 readme = "README.md"

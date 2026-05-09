@@ -80,11 +80,19 @@ so users always get downloadable wheels off the release page.
 
 PyPI publishing uses OIDC, no API tokens. To set it up:
 
-1. Make sure the project name is registered on PyPI. Verify with
-   `curl -sI https://pypi.org/project/ragdrift/ | head -1` — should be `200`.
-2. Visit https://pypi.org/manage/project/ragdrift/settings/publishing/.
-3. Click **"Add a new publisher"**, then fill in **exactly**:
+**The PyPI distribution name is `ragdrift-py`, not `ragdrift`** — the bare
+name was claimed by an unrelated project. All `pip` commands and Trusted
+Publisher config use `ragdrift-py`.
+
+1. If `ragdrift-py` doesn't exist on PyPI yet, register a **pending publisher**:
+   visit https://pypi.org/manage/account/publishing/ and click
+   "Add a new pending publisher". (PyPI auto-creates the project on the first
+   matching publish.)
+2. If the project already exists, visit
+   https://pypi.org/manage/project/ragdrift-py/settings/publishing/.
+3. Fill in **exactly** (capitalization matters):
    ```
+   PyPI Project Name:   ragdrift-py
    Owner:               MukundaKatta
    Repository name:     ragdrift
    Workflow filename:   release.yml
@@ -122,7 +130,7 @@ Both auto-deploy. No action needed:
 ## After the release
 
 1. Verify on crates.io: `curl -s https://crates.io/api/v1/crates/ragdrift | jq '.crate.max_version'`
-2. Verify on PyPI: `pip install ragdrift==X.Y.Z` in a fresh venv.
+2. Verify on PyPI: `pip install ragdrift-py==X.Y.Z` in a fresh venv (imports as `ragdrift`).
 3. Verify the GitHub Release has every wheel attached.
 4. Update the `[Unreleased]` link at the bottom of `CHANGELOG.md`.
 5. Bump to `X.Y.(Z+1)-dev` on `main` *only if* you want to make the work-in-progress

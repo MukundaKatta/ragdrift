@@ -5,8 +5,11 @@ Five minutes from `pip install` to a working drift report on synthetic data.
 ## Install
 
 ```bash
-pip install ragdrift
+pip install ragdrift-py
 ```
+
+(The PyPI distribution name is `ragdrift-py` because the bare `ragdrift`
+was taken; the Python import stays `import ragdrift`.)
 
 ## Run
 

@@ -46,6 +46,15 @@ records the choice and the alternative considered.
   We accept `PyReadonlyArray2<f32>` for embeddings (zero-copy) and convert to
   `ArrayView2<f32>` internally.
 
+## Naming
+
+- **PyPI dist is `ragdrift-py`, import name is `ragdrift`.** The bare
+  `ragdrift` on PyPI was already owned (by Crish Nagarkar's "Silent regression
+  detector for RAG pipelines", v0.1.0). Rather than rename the whole project,
+  we use the `pyyaml`/`opencv-python` pattern: distribution name carries a
+  suffix, import name stays clean. Rust crates on crates.io kept the bare
+  `ragdrift` name (we got there first).
+
 ## Lessons from the v0.1.0 ship
 
 These are corrections we made between writing the code and getting the public

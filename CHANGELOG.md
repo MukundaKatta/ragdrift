@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [0.1.1] - 2026-05-09
 
+### Changed
+- **PyPI distribution name is `ragdrift-py`**, not `ragdrift`. The bare name
+  was already taken by an unrelated project. The Python *import* stays
+  `import ragdrift`, same convention as `pyyaml`/`yaml`. The Rust crates on
+  crates.io (`ragdrift` and `ragdrift-core`) are unaffected.
+
 ### Fixed
 - Crate metadata `rust-version` corrected from `1.75` to `1.80`. The `parallel`
   default feature pulls `rayon-core 1.13.0` which itself requires rustc 1.80,

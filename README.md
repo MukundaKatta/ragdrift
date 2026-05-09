@@ -25,15 +25,20 @@ releases the GIL on the heavy paths.
 ## Install
 
 ```bash
-pip install ragdrift
+pip install ragdrift-py
 ```
+
+> The PyPI distribution is **`ragdrift-py`** (the bare `ragdrift` name on PyPI
+> was taken by an unrelated project). The Python import is still
+> `import ragdrift`, same convention as `pyyaml`/`yaml` or `opencv-python`/`cv2`.
+> The Rust crates on crates.io are unaffected — `cargo add ragdrift` works.
 
 Optional extras:
 
 ```bash
-pip install 'ragdrift[opensearch,aws]'        # adapter + CloudWatch exporter
-pip install 'ragdrift[pgvector,prometheus]'
-pip install 'ragdrift[pinecone,datadog]'
+pip install 'ragdrift-py[opensearch,aws]'        # adapter + CloudWatch exporter
+pip install 'ragdrift-py[pgvector,prometheus]'
+pip install 'ragdrift-py[pinecone,datadog]'
 ```
 
 ## 30-second quickstart
