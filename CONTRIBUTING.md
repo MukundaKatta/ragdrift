@@ -31,6 +31,7 @@ ruff format --check .
 ```
 
 CI runs the same matrix on Linux, macOS, and Windows for Python 3.10 through 3.13.
+Rust MSRV is 1.80 (verified by a dedicated linux-only `msrv` job).
 
 ## Where things live
 

@@ -5,7 +5,9 @@ resolver = "2"
 [workspace.package]
 version = "0.1.0"
 edition = "2021"
-rust-version = "1.75"
+# MSRV is 1.80 because rayon-core 1.13 requires it. We previously said 1.75
+# but that was wrong — `rayon` is a default-feature transitive dep.
+rust-version = "1.80"
 authors = ["Mukunda Katta <mukunda.vjcs6@gmail.com>"]
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/MukundaKatta/ragdrift"
