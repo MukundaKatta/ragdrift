@@ -19,7 +19,7 @@ categories = ["science", "algorithms"]
 
 [workspace.dependencies]
 # numerical core
-ndarray = { version = "0.16", features = ["serde", "rayon"] }
+ndarray = { version = "0.17", features = ["serde", "rayon"] }
 ndarray-rand = "0.15"
 rand = "0.8"
 rand_distr = "0.4"
