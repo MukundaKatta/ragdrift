@@ -36,7 +36,7 @@ dependencies = ["numpy>=1.26,<3"]
 # Vector store adapters
 opensearch = ["opensearch-py>=2.4,<3"]
 pgvector = ["sqlalchemy>=2.0,<3", "psycopg[binary]>=3.1,<4", "pgvector>=0.2,<1"]
-pinecone = ["pinecone>=5,<8"]
+pinecone = ["pinecone>=9.1.0,<10"]
 # Metric exporters
 prometheus = ["prometheus-client>=0.19,<1"]
 datadog = ["datadog-api-client>=2.20,<3"]
